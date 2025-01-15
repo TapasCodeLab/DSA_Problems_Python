@@ -1,2 +1,2 @@
-# DSA_Problems
-Practice DSA Problems from Leetcode, GFG, Scaler and other platforms 
+# DSA_Problems_Python
+Practice DSA Problems from Leetcode, GFG, Scaler and other platforms in Python 
