@@ -1,14 +1,34 @@
-# https://www.geeksforgeeks.org/problems/find-k-th-smallest-element-in-bst/1
+# https://www.geeksforgeeks.org/problems/check-for-bst/1
+
+# User function Template for python3
+
+class Solution:
+
+    # Function to check whether a Binary Tree is BST or not.
+    def isBST(self, root):
+        # code here
+        def helper(node, left_min, right_max):
+            if not node:
+                return True
+            elif left_min <= node.data <= right_max and \
+                    helper(node.left, left_min, node.data) and \
+                    helper(node.right, node.data, right_max):
+                return True
+            else:
+                return False
+
+        return helper(root, -float('inf'), float('inf'))
+
 
 # {
 # Driver Code Starts
 # Initial Template for Python 3
-
 from collections import deque
 
 
 # Tree Node
 class Node:
+
     def __init__(self, val):
         self.right = None
         self.data = val
@@ -71,52 +91,17 @@ def buildTree(s):
     return root
 
 
-# } Driver Code Ends
-# User function Template for python3
-
-'''
-class Node:
-    def __init__(self, val):
-        self.right = None
-        self.data = val
-        self.left = None
-'''
-
-
-class Solution:
-    # Return the kth smallest element in the given BST
-    def kthSmallest(self, root, k):
-        # code here.
-        self.position = 0
-        self.res = -1
-
-        def helper(node):
-            if not node:
-                return
-            helper(node.left)
-            if self.position >= k:
-                return
-            self.position += 1
-            if self.position == k:
-                self.res = node.data
-                return
-            helper(node.right)
-
-        helper(root)
-        return self.res
-
-
-# {
-# Driver Code Starts.
 # if __name__ == "__main__":
 #     t = int(input())
 #     for _ in range(0, t):
 #         s = input()
 #         root = buildTree(s)
-#         k1 = int(input())
-#         print(Solution().kthSmallest(root, k1))
-#
+#         if Solution().isBST(root):
+#             print("true")
+#         else:
+#             print("false")
 #         print("~")
+
 # } Driver Code Ends
 
 import unittest
@@ -127,22 +112,21 @@ class TestSolution(unittest.TestCase):
         self.solution = Solution()
 
     def testcase1(self):
-        root = buildTree('2 1 3')
-        k = 2
-        self.assertEqual(2,self.solution.kthSmallest(root,k))
+        root = buildTree('2 1 3 N N N 5')
+        self.assertEqual(True,Solution().isBST(root))
 
     def testcase2(self):
-        root = buildTree('2 1 3')
-        k = 5
-        self.assertEqual(-1,self.solution.kthSmallest(root,k))
+        root = buildTree('2 N 7 N 6 N 9')
+        self.assertEqual(False,Solution().isBST(root))
 
     def testcase3(self):
-        root = buildTree('20 8 22 4 12 N N N N 10 14')
-        k = 3
-        self.assertEqual(10, self.solution.kthSmallest(root, k))
+        root = buildTree('10 5 20 N N 9 25')
+        self.assertEqual(False,Solution().isBST(root))
 
     def tearDown(self):
         pass
 
-if __name__ == '__manin__':
+
+if __name__ == '__main__':
     unittest.main()
+
