@@ -1,3 +1,5 @@
+# https://www.geeksforgeeks.org/problems/product-array-puzzle4525/1
+
 class Solution:
     def productExceptSelf(self, arr):
         # code here
