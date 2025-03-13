@@ -1,3 +1,4 @@
+#https://www.geeksforgeeks.org/problems/count-ways-to-reach-the-nth-stair-1587115620/1
 class Solution:
     def countWays(self, n):
         # code here
