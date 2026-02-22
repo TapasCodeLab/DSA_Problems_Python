@@ -3,7 +3,8 @@ from typing import List
 import unittest
 
 class Solution:
-    def findNeighbours(self, row, col, rowLength, colLength):
+    @staticmethod
+    def findNeighbours(row, col, rowLength, colLength):
         res = []
         for new_row, new_col in [[row+1, col], [row-1,col], [row,col+1], [row,col-1]]:
             if 0 <= new_row < rowLength and 0 <= new_col < colLength:
@@ -22,7 +23,7 @@ class Solution:
 
         while queue:
             row, col, time = queue.popleft()
-            for new_row, new_col in self.findNeighbours(row, col, rowLength, colLength):
+            for new_row, new_col in Solution.findNeighbours(row, col, rowLength, colLength):
                 if grid[new_row][new_col] ==1:
                     grid[new_row][new_col] = 2
                     queue.append([new_row, new_col, time+1])

@@ -41,5 +41,3 @@ class TestSolution(unittest.TestCase):
     def tearDown(self):
         pass
 
-
-
