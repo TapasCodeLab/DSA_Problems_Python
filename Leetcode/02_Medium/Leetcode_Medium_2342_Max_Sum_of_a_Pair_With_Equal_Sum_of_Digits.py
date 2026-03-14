@@ -1,4 +1,5 @@
 from typing import List
+import unittest
 
 class Solution:
     def maximumSum(self, nums: List[int]) -> int:
@@ -25,3 +26,21 @@ class Solution:
                 ans = max(ans, val[0] + val[1])
 
         return -1 if ans == 0 else ans
+
+class TestSolution(unittest.TestCase):
+
+    def setUp(self):
+        self.solution = Solution()
+
+    def testcase1(self):
+        self.assertEqual(54, self.solution.maximumSum([18,43,36,13,7]))
+
+    def testcase2(self):
+        self.assertEqual(-1, self.solution.maximumSum([10,12,19,14]))
+
+    def tearDown(self):
+        pass
+
+
+if __name__=='__main__':
+    unittest.main()
